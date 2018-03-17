@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
 
 
   def show
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks
   end
 
   def new
@@ -32,8 +34,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1
-  # PATCH/PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
     respond_to do |format|
@@ -59,7 +59,6 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:project_name)
     end

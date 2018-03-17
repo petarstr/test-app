@@ -13,5 +13,14 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
 
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
+
+  # resources :projects, shallow: true do
+  #   resources :tasks do
+  #     resources :comments
+  #   end
+  # end
+
 end
