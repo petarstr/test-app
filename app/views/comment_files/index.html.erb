@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comment Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>File</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comment_files.each do |comment_file| %>
+      <tr>
+        <td><%= comment_file.comment_id %></td>
+        <td><%= comment_file.file %></td>
+        <td><%= link_to 'Show', comment_file %></td>
+        <td><%= link_to 'Edit', edit_comment_file_path(comment_file) %></td>
+        <td><%= link_to 'Destroy', comment_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comment File', new_comment_file_path %>

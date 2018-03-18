@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+  <div class="comment">
+    <%= @comment.comment %>
+    <%= @comment.comment_files.each do |file| %>
+      <a href="<%=file.file.url%>"> <%=file.file_identifier%> </a>
+    <% end %>
+  </div>
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', task_comments_path(@comment.task) %>

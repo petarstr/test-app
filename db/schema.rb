@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317113050) do
+ActiveRecord::Schema.define(version: 20180317154344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comment_files", force: :cascade do |t|
+    t.integer  "comment_id", null: false
+    t.string   "file",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "task_id",    null: false
+    t.string   "comment",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
+  end
 
   create_table "priorities", force: :cascade do |t|
     t.string   "status",     null: false

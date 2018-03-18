@@ -1,4 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_project_task_path(@project, @task) %> |
-<%= link_to 'Back', project_tasks_path %>
+  <div class="col-sm-12 margin-top-50">
+    <div class="row">
+      <div class="col-sm-8">
+        <h3><%= @task.title %></h3>
+      </div>
+      <div class="col-sm-4">
+        <% if current_user.id == @task.project.user.id %>
+        <%= link_to 'Add a Comment', new_task_comment_path(@task), class: 'btn btn-outline-secondary' %>
+        <%= link_to 'Edit Task', edit_task_path(@task), class: 'btn btn-outline-secondary' %>
+        <% end %>
+        <%= link_to 'Project', project_path(@task.project), class: 'btn btn-outline-secondary' %>
+      </div>
+    </div>
+    <hr>
+    <div class="task-desc">
+      <p><%= @task.description %></p>
+    </div>
+    <div class="task-desc-footer">
+      <span><%= @task.priority.status %></span>
+      <span><%= "Done" if @task.done %></span>
+      <span><%= @task.deadline.strftime('%H:%M %a %b %d %Y') if @task.deadline %></span>
+    </div>
+    <table class="table table-hover">
+      <% @task.comments.each do |comment| %>
+      <tr>
+        <td>
+          <span class="d-block break-word"><%= comment.comment %></span>
+          <div class="margin-top-5">
+            <% comment.comment_files.each do |file| %>
+              <a href="<%=file.file.url%>"> <%=file.file_identifier%></a>
+            <% end %>
+          </div>
+        </td>
+        <% if current_user.id == @task.project.user.id %>
+          <td><%= button_to "Delete comment", comment, method: :delete %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>

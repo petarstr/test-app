@@ -1,3 +1,29 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task-desc p {
+  font-size: 18px;
+}
+
+td {
+  word-break: break-all;
+  font-size: 14px;
+}
+
+td a:hover {
+  background-color: inherit;
+  text-decoration: underline !important;
+}
+
+.links a:hover {
+  background-color: inherit;
+  text-decoration: underline !important;
+}
+
+.task-desc-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}

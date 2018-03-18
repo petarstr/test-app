@@ -12,15 +12,10 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
 
-
-  resources :projects do
-    resources :tasks
+  resources :projects, shallow: true do
+    resources :tasks do
+      resources :comments, except: [:index, :show, :edit, :update]
+    end
   end
-
-  # resources :projects, shallow: true do
-  #   resources :tasks do
-  #     resources :comments
-  #   end
-  # end
 
 end

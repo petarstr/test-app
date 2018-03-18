@@ -1,6 +1,14 @@
-<h1>Editing Task</h1>
-
-<%= render 'form', task: @task %>
-
-<%= link_to 'Show', project_task_path(@task) %> |
-<%= link_to 'Back', project_tasks_path %>
+<div class="row margin-top-50">
+  <div class="offset-sm-2 col-sm-8">
+    <div class="row">
+      <div class="col-sm-10">
+        <h2>Editing Task</h2>
+      </div>
+      <div class="col-sm-2">
+        <%= button_to 'Destroy', @task, method: :delete, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+    <hr>
+    <%= render 'form', task: @task %>
+  </div>
+</div>

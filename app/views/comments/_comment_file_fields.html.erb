@@ -1,0 +1,5 @@
+<div class="nested-fields margin-top-10">
+    <%= f.label :file %><br>
+    <%= f.file_field :file, multiple: true, name: "comment_files[file][]" %>
+    <%= link_to_remove_association "remove", f, class: 'btn-sm btn-outline-warning' %>
+</div>

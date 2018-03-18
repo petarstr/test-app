@@ -10,11 +10,29 @@
       </ul>
     </div>
   <% end %>
-  <%= f.text_field :title %>
-  <%= f.text_field :description %>
-  <%= f.collection_select :priority_id, @priorities,:id,:status %>
-  <%= f.datetime_select :deadline %>
+
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :priority %><br>
+    <%= f.collection_select :priority_id, Priority.all, :id, :status %>
+  </div>
+  <div class="form-group">
+    <%= f.label :deadline %><br>
+    <%= f.datetime_select :deadline, start_year: Date.today.year, :include_blank => true, class: "form-control" %>
+  </div>
+  <div class="form-inline">
+      <%= f.label :done, class: "" %>
+      <%= f.check_box :done, {class: "form-check-input"}, "true", "false" %>
+
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
